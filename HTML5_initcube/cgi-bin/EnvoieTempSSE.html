@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>Getting server updates</h1>
+<div id="EnvoieTemp"></div>
+
+<script>
+    var source = new EventSource("cgi-bin/EnvoieTempSSE.cgi");
+    source.onmessage = function(event) 
+	{
+        document.getElementById("EnvoieTemp").innerHTML = event.data;
+    };
+
+</script>
+
+</body>
+</html>

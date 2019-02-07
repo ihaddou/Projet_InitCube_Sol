@@ -5,6 +5,18 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" media="screen" type="text/css" href="../css/css.css"/>
 </head>
+
+<script>
+    var source = new EventSource("../cgi-bin/EnvoieTempSSE.cgi");
+    source.onmessage = function(event) 
+	{
+	var obj = JSON.parse (event.data);
+        document.getElementById("temp").innerHTML = obj.temp;
+	document.getElementById("charge").innerHTML = obj.charge;
+    };
+
+</script>
+ 
 <body>
 <div class="wrapper row1">
   <header id="header" class="clear">
@@ -54,9 +66,9 @@
 
    <tbody> <!-- Corps du tableau -->
        <tr>
-           <td>Carmen</td>
-           <td>33 ans</td>
-           <td>Espagne</td>
+           <td>Thermometre</td>
+           <td id="temp"></td>
+           <td id="charge"></td>
        </tr>
        <tr>
            <td>Michelle</td>
