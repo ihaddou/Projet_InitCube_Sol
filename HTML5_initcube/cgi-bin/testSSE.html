@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>Getting server updates</h1>
+<div id="result"></div>
+
+<script>
+    var source = new EventSource("cgi-bin/testSSE.cgi");
+    source.onmessage = function(event) 
+	{
+        document.getElementById("result").innerHTML = event.data;
+    };
+
+</script>
+
+</body>
+</html>
